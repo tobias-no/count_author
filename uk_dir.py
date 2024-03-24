@@ -20,6 +20,7 @@ dir_authors = [
 "Spurny, Manuela",
 "Jiang, Yixin",
 "Fink, Matthias A.",
-"Nattenmüller, Johanna"
+"Tobias Nonnenmacher",
+"Hans-Ulrich Kauczor",
 ]
 

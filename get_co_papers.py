@@ -9,7 +9,8 @@ import logging
 import uk_dir
 
 log = logging.getLogger(__name__)
-logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s: %(message)s', level=logging.INFO)
+#logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s: %(message)s', level=logging.INFO)
+logging.basicConfig(format='%(asctime)s %(name)s %(levelname)s: %(message)s', level=logging.DEBUG)
 
 class Papers(object):
     def __init__(self, bibfile):
@@ -58,6 +59,7 @@ class Papers(object):
 
     def _get_doi(self, db_entry):
         try:
+            return db_entry["doi"]
             return db_entry["article-doi"]
         except:
             log.debug("doi not defined for {}".format(db_entry["title"]))
@@ -115,13 +117,13 @@ class Papers(object):
 
 
 if __name__ == "__main__":
-    bibfile = "papers_coauthor_2022.bib"
-    p_2022 = Papers(bibfile)
+    bibfile = "results_2023/papers_coauthor_2023.bib"
+    p = Papers(bibfile)
 
     own_names = ["Nonnenmacher, Tobias", "Nonnenmacher, T."]
-    tono = p_2022.create_list()
+    tono = p.create_list()
 
-    save_file = "the_result.xlsx"
+    save_file = "results_2023/the_result.xlsx"
     tono.to_excel(save_file, index=False)
     log.info("saved results in {}".format(save_file))
     
